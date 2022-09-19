@@ -1,0 +1,63 @@
+<template>
+    <lightning-card >
+     
+        <template if:true={oportunidades.data} >
+            <div class="slds-p-around_small">
+
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+                    <thead>
+                     
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Opportunity Name">Opportunity Name</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Account Name">Account Name</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Account Amount">Account Amount</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Opportunity Close Date">Close Date</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Opportunity Tyoe">Type</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Opportunity Stage Name">Stage Name</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={oportunidades.data} for:item="opp">
+    
+                            <tr class="slds-hint-parent" key={opp.id}>
+                                <td data-label="Opportunity Name">
+                                    <div class="slds-truncate" title="Name">
+                                        <a onclick={navigateToRecordViewPage} data-id={opp.Id} >{opp.Name}</a>                                 
+                                    </div>
+                                </td>
+                                <td data-label="Account Name">
+                                    <div class="slds-truncate" title="Account Name">{opp.Account.Name}</div>
+                                </td>
+                                <td data-label="Amount Name">
+                                    <div class="slds-truncate" title="Ammount">{opp.Amount}</div>
+                                </td>
+                                <td data-label="Opportunity Close Date">
+                                    <div class="slds-truncate" title="Close Date">{opp.CloseDate}</div>
+                                </td>
+                                <td data-label="Opportunity type">
+                                    <div class="slds-truncate" title="Type">{opp.Type}</div>
+                                </td>
+                                <td data-label="Opportunity Stage Name">
+                                    <div class="slds-truncate" title="Stage Name">{opp.StageName}</div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+    </lightning-card>
+    
+</template>

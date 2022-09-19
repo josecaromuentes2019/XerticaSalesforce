@@ -1,0 +1,13 @@
+<apex:page controller="ListOpportunity" renderAs="pdf">
+    <apex:pageBlock title="Oppotunities List" id="oppotunities_list">
+        <apex:pageBlockTable value="{! oneOportunidad }" var="op">
+             <apex:column value="{! op.Name }"/>
+             <apex:column value="{! op.Account.name }"/>
+             <apex:column value="{! op.Amount }"/>
+             <apex:column value="{! op.CloseDate }"/>
+             <apex:column value="{! op.Type }"/>
+             <apex:column value="{! op.StageName }"/>
+        </apex:pageBlockTable>
+     </apex:pageBlock>
+
+</apex:page>

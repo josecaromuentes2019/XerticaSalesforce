@@ -1,0 +1,34 @@
+<apex:page controller="ListOpportunity">
+    <apex:form >
+        <head>
+            <script>
+            function Exportar_Excel(){
+                confirm('Desea desacargar archivo en formato Excel?');
+                window.open('/apex/ExportarExcel'); 
+            }
+            </script>
+        </head>
+        <body>
+            <apex:commandButton value="Export a Excel" onclick="Exportar_Excel();" oncomplete=""/>
+            <apex:pageBlock title="Oppotunities List" id="oppotunities_list">
+                <apex:pageBlockTable value="{! oportunidades }" var="op">
+                    <apex:column >
+                        <apex:outputlink value="/apex/ExportarPdf">
+                            {! op.Name}
+                            <apex:param name="msg" value="{! op.id}"/> 
+                        </apex:outputlink>
+                    </apex:column>
+                <apex:column value="{! op.Account.name }"/>
+                <apex:column value="{! op.Amount }"/>
+                <apex:column value="{! op.CloseDate }"/>
+                <apex:column value="{! op.Type }"/>
+                <apex:column value="{! op.StageName }"/>
+            </apex:pageBlockTable>
+            </apex:pageBlock>
+
+            <apex:pageBlock>
+                {!$CurrentPage.parameters.msg}
+            </apex:pageBlock>
+        </body>
+    </apex:form>
+</apex:page>
